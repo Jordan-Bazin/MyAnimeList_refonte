@@ -1,9 +1,8 @@
 import './container.css'
-import Anime from "../anime/Anime";
+import AnimeInSection from "../anime/Anime";
 import { Carousel } from '@mantine/carousel';
 import { createStyles } from '@mantine/core';
 import { useState, useEffect } from "react";
-import Section from './Section';
 
 const useStyles = createStyles((theme, _params, getRef) => {
   return {
@@ -26,13 +25,13 @@ const useStyles = createStyles((theme, _params, getRef) => {
 export default function Container() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [postsManga, setPostsManga] = useState([]);
   const { classes, cx } = useStyles();
 
   useEffect(() => {
     fetch("https://api.jikan.moe/v4/anime")
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setPosts(data["data"]);
         setLoading(true);
       })
@@ -41,25 +40,31 @@ export default function Container() {
       });
   }, []);
 
-  let anime = posts.map((post, index) => {
-    return (
-      <Anime key={index} data={post} />
-    )
-  });
+  /*useEffect(() => {
+    fetch("https://api.jikan.moe/v4/manga")
+      .then((response) => response.json())
+      .then((data) => {
+        setPostsmanga(data["data"]);
+        setLoading(true);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  }, []);*/
 
 
   let listSections = ["Trending", "Popular", "Upcoming", "Top"];
   let sections = listSections.map((section, index) => {
     let anime = posts.map((post, index) => {
       return (
-        <Carousel.Slide style={{width : 180}}>
-          <Anime key={index} data={post} />
+        <Carousel.Slide key={index} style={{width : 180}}>
+          <AnimeInSection data={post} />
         </Carousel.Slide>
       )
     })
 
     return (
-      <div className='listSection'>
+      <div className='listSection' key={index}>
         <h3>{section}</h3>
         <Carousel
           slideSize="10%"

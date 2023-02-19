@@ -1,6 +1,6 @@
 import "./anime.css"
 
-export default function Anime(props) {
+export default function AnimeInSection(props) {
 
     return (
         <div className="anime">

@@ -26,12 +26,12 @@ export default function CarrouselPoster(props) {
     const { classes, cx } = useStyles();
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [cpt, setCpt] = useState(0);
 
     useEffect(() => {
         fetch("https://api.jikan.moe/v4/anime")
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);
                 setPosts(data["data"]);
                 setLoading(true); /* On modifie la valeur à la fin du fetch */
             })
@@ -47,9 +47,9 @@ export default function CarrouselPoster(props) {
     });
 
     return (
-        <div className="carrouselPoster">
+        <div>
             <Carousel
-                style={{borderBottom : "5px solid", borderColor: "lightgray"}}
+                style={{borderBottom : "5px solid lightgray"}}
                 classNames={classes}
                 mh="auto"
                 mx="auto"
