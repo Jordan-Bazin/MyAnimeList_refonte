@@ -1,0 +1,59 @@
+.main {
+    padding: 0;
+    margin: 0;
+}
+
+.app {
+    padding : 0;
+    margin: 0;
+    background-color: #333333;
+}
+
+.navbar {
+    height: auto;
+    background-color: #e3a163;
+}
+
+.navbar Button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 55px;
+    width: 90%;
+    background-color: #eb6c45;
+    border: none;
+    color: white;
+    font-family: "QUANTU";
+    font-size: 1.5em;
+}
+
+.navbar Button:hover {
+    background-color: #e0934a;
+    color: #282626;
+    border: 1px solid #333333;
+}
+
+.header {
+    display: flex;
+    background-color: #282626;
+    width: 100%;
+}
+
+.searchBar {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    margin-left: 450px;
+    width: 17%;
+    
+}
+
+.searchBar input {
+    display: flex;
+    height: 45px;
+    width: 100%;
+    border: none;
+    color: white;
+    font-family: "QUANTU";
+    font-size: 1.4em;
+}

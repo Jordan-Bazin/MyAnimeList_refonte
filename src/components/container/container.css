@@ -1,0 +1,29 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;    
+    height: 100%;
+}
+
+.sectionCarosel {
+    display: flex;
+    flex-direction: row;
+    height: 230px;
+}
+
+.listSection {
+    display: block;
+    
+    width: 100%;
+    height: 100%;
+    margin-top: 15px;
+    
+}
+
+.listSection h3 {
+    display: flex;
+    font-family: "QUANTU";
+    font-size: 1.5em;
+    color: white; 
+}

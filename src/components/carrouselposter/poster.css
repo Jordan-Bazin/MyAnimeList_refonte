@@ -1,0 +1,93 @@
+.slide {
+    display: flex;
+    flex-direction: row;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    height: 400px;
+    margin-bottom: 20px;
+}
+
+.titre {
+    display: flex;
+    font-size: 2em;
+    font-weight: bold;
+    color: white;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.poster {
+    display: flex;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 25px;
+}
+
+.synopsis {
+    display: flex; 
+    flex-wrap: wrap;
+    font-size: 1em;
+    color: white;
+    margin-left: 20px;
+    margin-top: 20px;
+    width: 90%;
+}
+
+.infoSlide {
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+    height: 100%;
+    
+}
+
+.rating {
+    display: flex;
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+     
+    flex-direction: column;
+    height: 100%;
+
+}
+
+.button Button {
+    display: flex;
+    margin-top: 20px;
+    height: 15;
+    width: 95%;
+    justify-content: center;
+    font-family: "Fredoka One";   
+}
+
+.statSlide {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+    
+}
+
+
+.popularityIcon {
+    display: flex;
+    width: 100px;
+    height: 100px;
+    background-color: #F5CBA7;
+    border-radius: 25%;
+    justify-content: center;
+    align-items: center;
+}
+
+.statSlide h3 {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: white;
+    font-family: "QUANTU";
+}
+

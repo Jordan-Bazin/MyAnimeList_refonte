@@ -1,0 +1,19 @@
+@font-face {
+  font-family: "Fredoka One";  
+  src: local("FredokaOne-Regular"),
+    url("./fonts/FredokaOne-Regular") format("truetype");
+}
+
+@font-face {
+  font-family: "QUANTU";   
+  src: local("QUANTU1H"),
+    url("./fonts/QUANTU1H.TTF") format("truetype");
+}
+
+body {
+  margin: 0;
+  display: flex;
+  width: 90%;
+}
+
+
