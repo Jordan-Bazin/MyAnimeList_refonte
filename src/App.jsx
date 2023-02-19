@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { createStyles, Navbar, Group, Text, AppShell, Header, Image, Input, Footer, Button } from '@mantine/core';
-import { Outlet } from "react-router-dom";
+import { createStyles, Navbar, Group, Text, AppShell, Header, Image, Input, Footer, Button, ScrollArea } from '@mantine/core';
+import { Outlet, Link } from "react-router-dom";
 import SearchIcon from './components/icons/Icons';
 import Container from './components/container/Container'
 import CarrouselPoster from './components/carrouselposter/CarrouselPoster'
@@ -44,24 +44,36 @@ export default function App() {
       asideOffsetBreakpoint="sm"
       navbar={
         <Navbar className='navbar' p="md" hiddenBreakpoint="sm" hidden={!opened} width={{ base: 100, sm: 200, lg: 300 }}>
-          <Group className={classes.navbar} position="apart">
-            <div style={{ width: 200, marginLeft: 'auto', marginRight: 'auto' }}>
-              <Image radius="md"
-                src="./../public/logo.png"
-                alt="logo"
-                fit="contain"
-              />
-            </div>
-          </Group>
+          <Link to="/">
+            <Group className={classes.navbar} position="apart">
+              <div style={{ width: 200, marginLeft: 'auto', marginRight: 'auto' }}>
+                <Image radius="md"
+                  src="./../public/logo.png"
+                  alt="logo"
+                  fit="contain"
+                />
+              </div>
+            </Group>
+          </Link>
           <Group className={classes.navbar} position="apart" style={{ display: "flex", justifyContent: "center" }}>
             <Connection />
           </Group>
-          <Group position="apart" style={{ display: "flex", justifyContent: "center" }}>
-            <Button>ANIME</Button>
-            <Button>MANGA</Button>
-            <Button>COMMUNITY</Button>
-            <Button>ABOUT</Button>
+          <Navbar.Section grow component={ScrollArea} mx="-xs" px="xs">
+          <Group position="apart">
+            <Link className='link' to="/anime">
+              <Button>ANIME</Button>
+            </Link>
+            <Link className='link' to="/manga">
+              <Button>MANGA</Button>
+            </Link>
+            <Link className='link' to="/community">
+              <Button>COMMUNITY</Button>
+            </Link>
+            <Link className='link' to="/about">
+              <Button>ABOUT</Button>
+            </Link>
           </Group>
+          </Navbar.Section>
         </Navbar>
       }
       header={
@@ -89,10 +101,7 @@ export default function App() {
         </Header>
       }
     >
-      <div className='main'>
-        <CarrouselPoster />
-        <Container />
-      </div>
+      <Outlet />
     </AppShell>
   );
 }
