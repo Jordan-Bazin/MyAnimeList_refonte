@@ -16,4 +16,11 @@ body {
   width: 90%;
 }
 
+.mantine-AppShell-main {
+  padding-top :calc(var(--mantine-header-height, 0px));
+  padding-left :calc(var(--mantine-navbar-width, 0px));
+  padding-bottom: 0px;
+  padding-right: 0px;
+}
+
 

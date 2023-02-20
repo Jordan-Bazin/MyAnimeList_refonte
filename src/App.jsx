@@ -4,7 +4,6 @@ import { Outlet, Link } from "react-router-dom";
 import SearchIcon from './components/icons/Icons';
 import Container from './components/container/Container'
 import CarrouselPoster from './components/carrouselposter/CarrouselPoster'
-import Connection from "./components/navbar/connection/Connection"
 import './App.css'
 
 
@@ -56,7 +55,9 @@ export default function App() {
             </Group>
           </Link>
           <Group className={classes.navbar} position="apart" style={{ display: "flex", justifyContent: "center" }}>
-            <Connection />
+          <Link className='link' to="/login">
+              <Button>LOGIN</Button>
+            </Link>
           </Group>
           <Navbar.Section grow component={ScrollArea} mx="-xs" px="xs">
           <Group position="apart">

@@ -3,7 +3,7 @@ import CarrouselPoster from '../carrouselposter/CarrouselPoster';
 
 export default function Home() {
     return (
-        <div>  
+        <div style={{paddingLeft : "16px"}}>  
             <CarrouselPoster />
             <Container />
         </div>
