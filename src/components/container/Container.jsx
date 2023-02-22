@@ -1,5 +1,5 @@
 import './container.css'
-import AnimeInSection from "../anime/Anime";
+import AnimeInSection from "../animeInSection/AnimeInSection";
 import { Carousel } from '@mantine/carousel';
 import { createStyles } from '@mantine/core';
 import { useState, useEffect } from "react";
@@ -39,19 +39,6 @@ export default function Container() {
         console.log(err.message);
       });
   }, []);
-
-  /*useEffect(() => {
-    fetch("https://api.jikan.moe/v4/manga")
-      .then((response) => response.json())
-      .then((data) => {
-        setPostsmanga(data["data"]);
-        setLoading(true);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
-  }, []);*/
-
 
   let listSections = ["Trending", "Popular", "Upcoming", "Top"];
   let sections = listSections.map((section, index) => {
@@ -95,7 +82,10 @@ export default function Container() {
 
   return (
     <div className="container">
-      {sections}
+      {loading ? sections : (
+        <div className="focusAnime__loading">
+        <img src="./../../../public/logo.png" />
+      </div> )}
     </div>
   )
 }

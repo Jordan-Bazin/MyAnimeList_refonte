@@ -5,11 +5,12 @@
     scroll-behavior: smooth;
     height: 400px;
     margin-bottom: 20px;
+    padding-right: 16px;
 }
 
-.titre {
+.titre__poster {
     display: flex;
-    font-size: 2em;
+    font-size: 1.9em;
     font-weight: bold;
     color: white;
     margin-left: 20px;
@@ -17,10 +18,19 @@
 }
 
 .poster {
+    height : 370px;
+    width : 250px;
     display: flex;
     margin-left: 20px;
     margin-right: 20px;
     margin-top: 25px;
+}
+
+.infoSlide {
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+    height: 100%;   
 }
 
 .synopsis {
@@ -33,13 +43,6 @@
     width: 90%;
 }
 
-.infoSlide {
-    display: flex;
-    flex-direction: column;
-    width: 65%;
-    height: 100%;
-    
-}
 
 .rating {
     display: flex;
@@ -55,11 +58,12 @@
 
 .button Button {
     display: flex;
-    margin-top: 20px;
+    margin-top: 25px;
     height: 15;
     width: 95%;
     justify-content: center;
     font-family: "Fredoka One";   
+    text-decoration: none;
 }
 
 .statSlide {
@@ -82,10 +86,18 @@
     align-items: center;
 }
 
-.statSlide h3 {
+h3 {
+    padding-left: 20px;
     font-size: 1.5em;
     font-weight: bold;
     color: white;
     font-family: "QUANTU";
 }
 
+.statSlide h3 {
+    padding-left: 0px;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: white;
+    font-family: "QUANTU";
+}

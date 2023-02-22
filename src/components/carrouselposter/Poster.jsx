@@ -1,6 +1,7 @@
 import "./poster.css"
-import { Button, Text, Image, Rating, Group } from '@mantine/core';
+import { Button, Text, Image, Rating, Group, ScrollArea } from '@mantine/core';
 import { Carousel } from '@mantine/carousel';
+import { Link } from "react-router-dom";
 
 export default function Poster(props) {
 
@@ -9,24 +10,18 @@ export default function Poster(props) {
     }
 
     return (
-        <>
             <Carousel.Slide className="slide">
                 <div>
-                    <Image className="poster"
-                        height={370}
-                        width={250}
-                        radius="md"
-                        src={props.data.images.jpg.large_image_url}
-                    />
+                    <Link to={`/focusAnime/${props.data.mal_id}`}><img className="poster"src={props.data.images.jpg.large_image_url}/></Link>
                 </div>
                 <div className="infoSlide">
-                    <Text fz={25} fw={700} className="titre">
+                    <Text className="titre__poster">
                         {props.data.title}
                     </Text>
-                    <Text fz={10} className="synopsis">
-                        <h3>Synopsis :</h3>
-                        {props.data.synopsis}
-                    </Text>
+                    <h3>Synopsis :</h3>
+                    <ScrollArea className="synopsis">
+                        <p>{props.data.synopsis}</p>
+                    </ScrollArea>
                 </div>
                 <div className="statSlide">
                     <Group className="rating">
@@ -36,12 +31,10 @@ export default function Poster(props) {
                         <Rating value={props.data.score / 2} fractions={8} title={props.data.score / 2} size="lg" readOnly />
                     </Group>
                     <div className="button">
-                        <Button className="buttonMoreInfo" variant="gradient" gradient={{ from: '#CD3D10', to: '#E3AA63', deg: 90 }} size="lg">MORE INFO</Button>
-                        <Button className="buttonAddWatchList" variant="gradient" gradient={{ from: 'indigo', to: 'cyan' }} size="lg">ADD TO WATCH LIST</Button>
+                        <Link className="link" to={`/focusAnime/${props.data.mal_id}`}><Button className="buttonMoreInfo" variant="gradient" gradient={{ from: '#CD3D10', to: '#E3AA63', deg: 90 }} size="lg">MORE INFO</Button></Link>
+                        <Link className="link" to={`/focusAnime/${props.data.mal_id}`}><Button className="buttonAddWatchList" variant="gradient" gradient={{ from: 'indigo', to: 'cyan' }} size="lg">ADD TO WATCH LIST</Button></Link>
                     </div>
                 </div>
             </Carousel.Slide>
-        </>
-
     )
 }

@@ -47,7 +47,6 @@ export default function CarrouselPoster(props) {
     });
 
     return (
-        <div>
             <Carousel
                 style={{borderBottom : "5px solid lightgray"}}
                 classNames={classes}
@@ -68,8 +67,12 @@ export default function CarrouselPoster(props) {
                     },
                 }}
             >
-                {anime.slice(0, 5)}
+                {loading ? anime.slice(0, 5) : (
+                    <div className="focusAnime__loading">
+                        <img src="./../../../public/logo.png" />
+                    </div>
+                    ) 
+                }
             </Carousel>
-        </div>
     )
 }

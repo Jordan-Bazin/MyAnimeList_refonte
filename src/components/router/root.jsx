@@ -6,6 +6,7 @@ import Anime from "../pages/anime";
 import Manga from "../pages/manga";
 import Community from "../pages/community";
 import About from "../pages/about";
+import FocusAnimeContainer from "../pages/focusAnimeContainer";
 import LoginContainer from "../pages/loginContainer";
 
 const router = createBrowserRouter([
@@ -33,9 +34,14 @@ const router = createBrowserRouter([
         {
           path: "/about",
           element: <About />
-        },{
+        },
+        {
           path: "/login",
           element: <LoginContainer />
+        },
+        {
+          path: "/focusAnime/:id",
+          element: <FocusAnimeContainer />
         },
       ]
     }

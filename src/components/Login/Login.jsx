@@ -24,7 +24,7 @@ export default function Login() {
                 </a>
             </Text>
             <Paper withBorder shadow="md" p={30} mt={30} radius="md">
-                <TextInput label="Email" placeholder="you@mantine.dev" required />
+                <TextInput label="Email" placeholder="weeb@weebmail.com" required />
                 <PasswordInput label="Password" placeholder="Your password" required mt="md" />
                 <Group position="apart" mt="lg">
                     <Checkbox label="Remember me" sx={{ lineHeight: 1 }} />
