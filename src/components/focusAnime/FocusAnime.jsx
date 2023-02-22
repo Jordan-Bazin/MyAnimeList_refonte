@@ -8,17 +8,13 @@ import EpisodesContainer from "./episodesContainer/EpisodesContainer";
 
 export default function FocusAnime(props) {
     const [anime, setAnime] = useState({});
-    const [episodeUrl, setEpisodeUrl] = useState(null);
     const [loading, setLoading] = useState(false);
-    const [loadingEpisodes, setLoadingEpisodes] = useState(false);
     const [scrapeLoading, setScrapeLoading] = useState(false);
     const [episodeData, setEpisodeData] = useState(null);
-
+    const [episodes, setEpisodes] = useState(null);
     const [count, handlers] = useCounter(1, { min: 0, max: 50 });
-    let content = Array()
-    content = Array(count)
-                .fill(0)
-                .map((_, index) => <EpisodesContainer key={index} data={episodeData} />);
+    const [cptEpisodes, setCptEpisodes] = useState(1);
+    const [hasLoaded, setHasLoaded] = useState(false);
 
     useEffect(() => {
         fetch(`https://api.jikan.moe/v4/anime/${props.id}/full`)
@@ -29,49 +25,48 @@ export default function FocusAnime(props) {
             });
     }, []);
 
-    useEffect(() => {
-        fetch(`https://api.jikan.moe/v4/anime/${props.id}/episodes`)
-            .then((response) => response.json())
-            .then((data) => {
-                setEpisodeUrl(data.data);
-                setLoadingEpisodes(true);
+    //useEffect(() => {
+    if(!scrapeLoading) {
+    let res = fetch('http://localhost:5000/anime/data', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ title: anime.title, id: anime.mal_id, cpt: cptEpisodes })
+        })
+            .then(response => response.text())
+            .then(data => {
+                setEpisodeData(data);
+                setScrapeLoading(true);
+            })
+            .catch(error => {
+                console.error(error);
             });
-    }, []);
-
-    let urls = [];
-    if (loadingEpisodes) {
-        urls = episodeUrl.map((episode) => { return episode.url; });
     }
 
-
+    //}, []);
+    
     /*useEffect(() => {
-        fetch('http://localhost:5000/anime')
-            .then((response) => response.text())
-            .then((data) => setEpisodeData(data))
-            .catch((error) => console.error(error));    
-    }, []);
-    console.log(episodeData);*/
+        if (episodeData && !hasLoaded) {
+            const createEpisodes = () => {
+                let content = Array(count)
+                  .fill(0)
+                  .map((_, index) => <EpisodesContainer key={index} data={episodeData} />);
+                return content;
+            }
 
-    useEffect(() => {
-            console.log(loadingEpisodes)
-            if(loadingEpisodes)
-            fetch('http://localhost:5000/anime/data', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(urls.slice(0, 5))
-            })
-                .then(response => response.text())
-                .then(data => {
-                    setEpisodeData(data);
-                    setScrapeLoading(true);
-                })
-                .catch(error => {
-                    console.error(error);
-                });
-        
-    }, [loadingEpisodes]);
+            setEpisodes(createEpisodes());
+            setHasLoaded(true);
+        }
+    }, [episodeData, count, hasLoaded]);
+
+    if(!scrapeLoading) {
+        return <p>En plein scrappage bro</p>
+    }*/
+
+    let content = Array(count)
+        .fill(0)
+        .map((_, index) => <EpisodesContainer key={index} data={episodeData} />);
 
     let img_src = "";
     let trailer_src = "";
@@ -88,8 +83,6 @@ export default function FocusAnime(props) {
     catch (e) {
         console.log(e);
     }
-
-
 
     return (
         <div className="focusAnime">

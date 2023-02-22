@@ -57,7 +57,7 @@ export default function EpisodesContainer(props) {
     let urlTest = url_array[0].substring(0, url_array[0].length - 1)
     url_array.slice(0, 5);
     let content = url_array.map((url, index) => { 
-    return (<div>
+    return (<div key={index}>
                 <img src={url} />
             </div>
     ) 
