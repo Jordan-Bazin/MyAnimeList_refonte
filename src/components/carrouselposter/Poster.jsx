@@ -11,7 +11,7 @@ export default function Poster(props) {
 
     return (
             <Carousel.Slide className="slide">
-                <div>
+                <div className="posterContainer">
                     <Link to={`/focusAnime/${props.data.mal_id}`}><img className="poster"src={props.data.images.jpg.large_image_url}/></Link>
                 </div>
                 <div className="infoSlide">

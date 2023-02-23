@@ -1,7 +1,11 @@
+import Container from '../container/Container';
+import CarrouselPoster from '../carrouselposter/CarrouselPoster';
+
 export default function Manga() {
     return (
-        <div>
-            <h1>Manga</h1>
+        <div style={{paddingLeft : "16px", paddingRight : "16px"}}>  
+            <CarrouselPoster />
+            <Container />
         </div>
-    )
+    );
 }

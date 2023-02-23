@@ -17,13 +17,18 @@
     margin-top: 20px;
 }
 
+.posterContainer {
+    width: auto;
+    height: 100%;
+}
+
 .poster {
     height : 370px;
-    width : 250px;
     display: flex;
     margin-left: 20px;
     margin-right: 20px;
     margin-top: 25px;
+    padding-bottom: 20px;
 }
 
 .infoSlide {
@@ -43,6 +48,10 @@
     width: 90%;
 }
 
+.synopsis p {
+    margin: 0;
+    padding: 0;
+}
 
 .rating {
     display: flex;

@@ -1,72 +1,41 @@
 import { useState, useEffect } from 'react';
-
-
-/*export default function EpisodesContainer(props) {
-    const [scrapeLoading, setScrapeLoading] = useState(false);
-    const [episodeData, setEpisodeData] = useState(null);
-    let url = props.data;
-
-    useEffect(() => {
-        fetch('http://localhost:5000/anime/data', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(props.urls)
-        })
-            .then(response => response.text())
-            .then(data => {
-                setEpisodeData(data);
-                setScrapeLoading(true);
-            })
-            .catch(error => {
-                console.error(error);
-            });
-    }, [props.urls]);
-
-
-    console.log(episodeData);
-    content = Array(count)
-        .fill(0)
-        .map((_, index) => <Episode key={index} data={episodeData} />);
-
-    return (
-        <div>
-            <img src={url} />
-        </div>
-    )
-}*/
+import Episode from './../episode/Episode';
+import "./episodeContainer.css";
 
 export default function EpisodesContainer(props) {
-    if(props.data === null) {
+    if (props.data === null) {
         return (
             <div>
-                <p>Loading...</p>
+                <p>Rien à afficher</p>
             </div>
         )
     }
     else {
-    let url = props.data;
-    console.log(url)
-    url = url.replace('[', '')
-    url = url.replace(']', '')
-    url = url.replace(/"/g, '');
-    
-    let url_array = url.split(',')
+        let url = props.dataScrapped;
+        if (props.dataApi.episodes < 5) {
+            url = url.slice(0, props.dataApi.episodes);
+        }
+        console.log(url);
+        let content = url.map((url, index) => {
+            if (url[0] == undefined || url[0] == "https://cdn.myanimelist.net/images/episodes/videos/icon_crunchyroll_small.png") {
+                let img_src = "";
+                try {
+                    img_src = props.dataApi.images.jpg.image_url;
+                }
+                catch (e) {
+                    console.log(e);
+                }
+                return ( <Episode key={index} img_src={img_src} title={url[1]} synopsis={url[2]}/> )
+            }
+            else {
+                return ( <Episode key={index} img_src={url[0]} title={url[1]} synopsis={url[2]}/>)
+            }
+        })
 
-    let urlTest = url_array[0].substring(0, url_array[0].length - 1)
-    url_array.slice(0, 5);
-    let content = url_array.map((url, index) => { 
-    return (<div key={index}>
-                <img src={url} />
+        return (
+            <div className="episodesContainer">
+                {content}
             </div>
-    ) 
-})
-  
-    return (
-        <div>
-            {content}
-        </div>
-    )
+        )
     }
 }

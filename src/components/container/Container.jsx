@@ -1,5 +1,5 @@
 import './container.css'
-import AnimeInSection from "../animeInSection/AnimeInSection";
+import AnimeInSection from "./animeInSection/AnimeInSection";
 import { Carousel } from '@mantine/carousel';
 import { createStyles } from '@mantine/core';
 import { useState, useEffect } from "react";
@@ -56,7 +56,7 @@ export default function Container() {
         <Carousel
           slideSize="10%"
           withIndicators
-          height={230}
+          height={240}
           slideGap="md"
           loop
           align="start"
@@ -66,7 +66,7 @@ export default function Container() {
                 backgroundColor: "#608DB0",
                 width: 16,
                 height: 6,
-                border: "1px solid lightgray",
+                border: "1px solid white",
                 transition: 'width 250ms ease',
                 '&[data-active]': {
                     width: 40,

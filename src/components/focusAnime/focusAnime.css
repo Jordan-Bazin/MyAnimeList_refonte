@@ -6,7 +6,7 @@
     width: 100%;
 }
 
-.focusAnime img {
+.poster {
     display: flex;
     width: auto;
     height: 100%;
@@ -55,11 +55,14 @@
 }
 
 .containerLeft {
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
-    width: 50%;
-    height: 700px;
-    background-color: aqua;
+    width: 70%;
+    height: 735px;
+    background-color: #282626;
+    border : 4px solid black;
+    border-radius: 30px;
 }
 
 .episodes {
@@ -67,21 +70,71 @@
     flex-direction: column;
     width: 100%;
     height: 100%;
-    background-color: green;
+}
+
+.addEpisodes {
+    margin-bottom: 5px;
+    font-family: "QUANTU";
 }
 
 .containerRight {
     display: flex;
     flex-direction: column;
-    width: 40%;
+    width: 25%;
     height: 100%;
-    background-color: red;
+} 
+
+.buttonFocus Button{
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 55px;
+    width: 90%;
+    background-color: #eb6c45;
+    border: 1px solid white;
+    color: white;
+    font-family: "QUANTU";
+    font-size: 1.5em;
 }
 
+.buttonFocus Button:hover {
+    background-color: #e0934a;
+    color: #282626;
+    border: 1px solid #333333;
+}
 
+.detailsContainer {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: 100%;
+    background-color: #282626;
+    border : 4px solid black;
+    border-radius: 15px;
+}
 
+.detailsContainer b {
+    font-size: 1.2em;
+}
 
+.detailsContainer p {
+    margin-top: 0px;
+    margin-left: 20px;
+    font-size: 1.1em;
+    font-weight: 300;
+    color: white;
+}
 
+.separation {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    
+    width: 90%;
+    height: 1px;
+    background-color: lightgray;
+}
 
 .focusAnime__loading {
     display: flex;
