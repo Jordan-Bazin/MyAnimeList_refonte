@@ -17,7 +17,7 @@ export default function EpisodesContainer(props) {
         }
         console.log(url);
         let content = url.map((url, index) => {
-            if (url[0] == undefined || url[0] == "https://cdn.myanimelist.net/images/episodes/videos/icon_crunchyroll_small.png") {
+            if (url[0] == undefined || url[0] == "https://cdn.myanimelist.net/images/episodes/videos/icon_crunchyroll_small_orange.png") {
                 let img_src = "";
                 try {
                     img_src = props.dataApi.images.jpg.image_url;
