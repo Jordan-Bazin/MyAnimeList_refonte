@@ -18,7 +18,6 @@ export default function FocusAnime(props) {
         if (cptEpisodes + 5 < anime.episodes) {
             setCptEpisodes(cptEpisodes + 5);
             setScrapeLoading(false);
-            console.log("On est la");
             fetch('http://localhost:5000/anime/data', {
                 method: 'POST',
                 headers: {
@@ -37,6 +36,7 @@ export default function FocusAnime(props) {
                 });
         }
     }
+
     useEffect(() => {
         fetch(`https://api.jikan.moe/v4/anime/${props.id}/full`)
             .then((response) => response.json())
@@ -44,7 +44,7 @@ export default function FocusAnime(props) {
                 setAnime(data.data);
                 setLoading(true);
             });
-    }, []);
+        }, []);
 
     if (!scrapeLoading) {
         let res = fetch('http://localhost:5000/anime/data', {

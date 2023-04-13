@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { createStyles, Navbar, Group, Text, AppShell, Header, Image, Input, Footer, Button, ScrollArea } from '@mantine/core';
 import { Outlet, Link } from "react-router-dom";
-import SearchIcon from './components/icons/Icons';
+import SearchIcon from './components/icons/SearchIcons';
 import Container from './components/container/Container'
-import CarrouselPoster from './components/carrouselposter/CarrouselPoster'
+import CarrouselPoster from './components/container/carrouselposter/CarrouselPoster'
 import './App.css'
 
 
@@ -79,25 +79,27 @@ export default function App() {
       }
       header={
         <Header className='header' height={{ base: 50, md: 70 }} p="md">
-          <div style={{ display: 'flex', alignItems: 'center', height: '100%', width: '100%' }}>
-            <Text
-              style={{ width: "60%" }}
-              variant="gradient"
-              gradient={{ from: '#FC8E45', to: '#3446FF', deg: 1 }}
-              sx={{ fontFamily: 'Fredoka One' }}
-              fz={35}
-              fw={700}>
-              MY ANIME LIST
-            </Text>
+          <div style={{ display: 'flex', alignItems: 'center', height: '100%', width: '100%'}}>
+            <Link className='title' to="/">
+              <Text
+                variant="gradient"
+                gradient={{ from: '#FC8E45', to: '#3446FF', deg: 1 }}
+                sx={{ fontFamily: 'Fredoka One' }}
+                fz={35}
+                fw={700}>
+                MY ANIME LIST
+              </Text>
+            </Link>
             <Input
               className='searchBar'
               placeholder="Search"
-              value={value}
-              onChange={handleInputChange}
-              variant="default"
-              size="sm"
+              //value={value}
+              //onChange={handleInputChange}
+              //variant="default"
+              //size="sm"
               icon={<SearchIcon />}
-            />
+              />
+            
           </div>
         </Header>
       }

@@ -4,7 +4,6 @@ import App from './App'
 import './index.css'
 import { RouterProvider } from "react-router-dom";
 import router from "./components/router/root"
-import { StrictMode } from "react";
 import { MantineProvider } from '@mantine/core';
 
 
