@@ -25,15 +25,17 @@ const useStyles = createStyles((theme, _params, getRef) => {
   };
 });
 
-function handleInputChange(event) {
-  setValue(event.target.value);
-}
-
 export default function App() {
   const { classes, cx } = useStyles();
   const [opened, setOpened] = useState(false);
 
-  const [value, setValue] = useState('');
+  const [searchInput, setSearchInput] = useState('');
+
+  
+function handleInputChange(event) {
+  setSearchInput(event.target.value);
+  console.log(searchInput);
+}
 
   return (
     <AppShell
@@ -93,8 +95,8 @@ export default function App() {
             <Input
               className='searchBar'
               placeholder="Search"
-              //value={value}
-              //onChange={handleInputChange}
+              //value={searchInput}
+              onChange={handleInputChange}
               //variant="default"
               //size="sm"
               icon={<SearchIcon />}

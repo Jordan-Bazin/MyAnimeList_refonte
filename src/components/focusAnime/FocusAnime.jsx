@@ -44,8 +44,8 @@ export default function FocusAnime(props) {
                 setAnime(data.data);
                 setLoading(true);
             });
-        }, []);
-
+    }, []);
+  
     if (!scrapeLoading) {
         let res = fetch('http://localhost:5000/anime/data', {
             method: 'POST',
@@ -95,25 +95,38 @@ export default function FocusAnime(props) {
                                     <p><b>Synopsis :</b></p>
                                     <p className="focusAnime__synopsis">{anime.synopsis}</p>
                                     <br />
-                                    <p><b>Genres</b> : {genre}</p>   
-                                    <p><b>Themes</b> : {theme}</p>                                                                            
-                                    <p><b>Producers</b> : {producer}</p>                                                                          
-                                    <p><b>Year</b> : {anime.year}</p>                                                                  
+                                    <p><b>Genres</b> : {genre}</p>
+                                    <p><b>Themes</b> : {theme}</p>
+                                    <p><b>Producers</b> : {producer}</p>
+                                    <p><b>Year</b> : {anime.year}</p>
                                 </div>
                             </ScrollArea>
                         </div>
                         <div className="focusAnime__container">
-                            <div className="containerLeft">
-                                <h3>Episodes : </h3>
-                                <ScrollArea className="episodes" mx="auto">
-                                    {content}
-                                </ScrollArea>
-                                <Group position="center" mt="md">
-                                    <Button className="addEpisodes" onClick={addEpisodes}>
-                                        Show More Episodes
-                                    </Button>
-                                </Group>
-                            </div>
+                            {anime.episodes == 1 ? (     
+                                    <div className="trailer">
+                                        <iframe style={{ width: '100%', height: '100%' }}
+                                            src={ anime.trailer.embed_url }
+                                            allowFullScreen
+                                        />
+                                    </div>
+                            ) : (
+                                <>
+                                    <div className="containerLeft">
+                                        <h3>Episodes : </h3>
+                                        <ScrollArea className="episodes" mx="auto">
+                                            {content}
+                                        </ScrollArea>
+                                        <Group position="center" mt="md">
+                                            <Button className="addEpisodes" onClick={addEpisodes}>
+                                                Show More Episodes
+                                            </Button>
+                                        </Group>
+                                    </div>
+                                </>
+                            )
+                            }
+
                             <div className="containerRight">
                                 <div className="buttonFocus">
                                     <Button className="">
@@ -128,8 +141,8 @@ export default function FocusAnime(props) {
                                     <p><b>Episodes : </b>{anime.episodes}</p>
                                     <p><b>Duration : </b>{anime.duration}</p>
                                     <p><b>Status : </b>{anime.status}</p>
-                                    <div style={{width : "100%", display : "flex", justifyContent : "center"}}><div className="separation"></div></div>
-                                    <div style={{display : "flex", flexDirection : "row"}}><p><b>Score : </b></p><Rating style={{paddingTop : "8px" , paddingLeft : "8px"}} value={anime.score / 2} fractions={8} title={anime.score / 2} size="md" readOnly /></div>
+                                    <div style={{ width: "100%", display: "flex", justifyContent: "center" }}><div className="separation"></div></div>
+                                    <div style={{ display: "flex", flexDirection: "row" }}><p><b>Score : </b></p><Rating style={{ paddingTop: "8px", paddingLeft: "8px" }} value={anime.score / 2} fractions={8} title={anime.score / 2} size="md" readOnly /></div>
                                     <p><b>Ranked : </b>{anime.rank}</p>
                                     <p><b>Popularity : </b>{anime.popularity}</p>
                                     <p><b>Members : </b>{anime.members}</p>
