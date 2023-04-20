@@ -83,7 +83,7 @@ export default function FocusAnime(props) {
     }
     console.log(anime);
     return (
-        <div className="focusAnime">
+        <div className="focus">
             {
                 loading ? (
                     <>

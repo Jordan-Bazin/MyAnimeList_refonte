@@ -4,9 +4,13 @@ import './searchResult.css';
 import ResultBox from '../resultBox/resultBox';
 
 export default function SearchResult() {
-    const [ searchResult, setSearchResult ] = useState({});
-    const [ loading, setLoading ] = useState(false);
-    let result = "";
+    const [ searchAnime, setSearchAnime ] = useState({});
+    const [ searchManga, setSearchManga ] = useState({});
+    const [ loadingAnime, setLoadingAnime ] = useState(false);
+    const [ loadingManga, setLoadingManga ] = useState(false);
+    let resultAnime = "";
+    let resultManga = "";
+    let result;
     let params = useParams();
 
     useEffect(() => {
@@ -14,8 +18,8 @@ export default function SearchResult() {
         //fetch(`https://api.jikan.moe/v4/anime?q=naruto`)
             .then((response) => response.json())
             .then((data) => {
-                setSearchResult(data.data);
-                setLoading(true);
+                setSearchAnime(data.data);
+                setLoadingAnime(true);
             });    
     }, []);
 
@@ -23,24 +27,29 @@ export default function SearchResult() {
         fetch(`https://api.jikan.moe/v4/manga?q=${params.searchInput}`)
             .then((response) => response.json())
             .then((data) => {
-                setSearchResult(data.data);
-                setLoading(true);
+                setSearchManga(data.data);
+                setLoadingManga(true);
             });    
     }, []);
     
-    if(loading) {
-        result = searchResult.map((result, index) => {
+    if(loadingAnime & loadingManga) {
+        resultAnime = searchAnime.map((result, index) => {
+            return (
+                    <ResultBox data={result} />
+            );
+        });
+        resultManga = searchManga.map((result, index) => {
             return (
                     <ResultBox data={result} />
             );
         });
     }
-
+    result = resultAnime.concat(resultManga);
 
     return (
         <div className='searchResult'>
             <h1>Search results for : {params.searchInput}</h1>
-            {loading ? 
+            {loadingAnime & loadingManga ? 
                 result : 
                 <h1>Loading...</h1>}
         </div>
