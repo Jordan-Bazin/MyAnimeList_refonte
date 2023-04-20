@@ -1,7 +1,11 @@
+import Container from '../container/Container';
+import CarrouselPoster from '../container/carrouselposter/CarrouselPoster';
+
 export default function Anime() {
     return (
-        <div>
-            <h1>Anime</h1>
+        <div style={{paddingLeft : "16px", paddingRight : "16px"}}>  
+            <CarrouselPoster />
+            <Container />
         </div>
-    )
+    );
 }

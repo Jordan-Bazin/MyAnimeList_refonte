@@ -54,9 +54,10 @@ export default function Container() {
       <div className='listSection' key={index}>
         <h3>{section}</h3>
         <Carousel
+          className='animeList'
           slideSize="10%"
           withIndicators
-          height={240}
+          height={260}
           slideGap="md"
           loop
           align="start"

@@ -6,18 +6,14 @@
     height: 100%;
 }
 
-.sectionCarosel {
-    display: flex;
-    flex-direction: row;
-    height: 230px;
-}
-
 .listSection {
-    display: block;
-    
+    display: block;  
     width: 100%;
     height: 100%;
     margin-top: 15px;
+}
+
+.animeList {
     
 }
 
