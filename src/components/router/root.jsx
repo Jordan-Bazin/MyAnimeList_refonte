@@ -8,6 +8,7 @@ import Community from "../pages/community";
 import About from "../pages/about";
 import FocusAnimeContainer from "../pages/focusAnimeContainer";
 import LoginContainer from "../pages/loginContainer";
+import SearchResult from "../pages/searchPage/searchResult/searchResult";
 
 const router = createBrowserRouter([
     {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
         {
           path: "/focusAnime/:id",
           element: <FocusAnimeContainer />
+        },
+        {
+          path: "/search/:searchInput",
+          element: <SearchResult />
         },
       ]
     }

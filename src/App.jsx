@@ -31,11 +31,16 @@ export default function App() {
 
   const [searchInput, setSearchInput] = useState('');
 
-  
-function handleInputChange(event) {
-  setSearchInput(event.target.value);
-  console.log(searchInput);
-}
+
+  function handleSearchInput(event) {
+    setSearchInput(event.target.value);
+    console.log(searchInput);
+  }
+
+  function handleSearchSubmit(event) {
+    console.log(searchInput);
+    window.location.href = `/search/${searchInput}`;
+  }
 
   return (
     <AppShell
@@ -57,31 +62,31 @@ function handleInputChange(event) {
             </Group>
           </Link>
           <Group className={classes.navbar} position="apart" style={{ display: "flex", justifyContent: "center" }}>
-          <Link className='link' to="/login">
+            <Link className='link' to="/login">
               <Button>LOGIN</Button>
             </Link>
           </Group>
           <Navbar.Section grow component={ScrollArea} mx="-xs" px="xs">
-          <Group position="apart">
-            <Link className='link' to="/anime">
-              <Button>ANIME</Button>
-            </Link>
-            <Link className='link' to="/manga">
-              <Button>MANGA</Button>
-            </Link>
-            <Link className='link' to="/community">
-              <Button>COMMUNITY</Button>
-            </Link>
-            <Link className='link' to="/about">
-              <Button>ABOUT</Button>
-            </Link>
-          </Group>
+            <Group position="apart">
+              <Link className='link' to="/anime">
+                <Button>ANIME</Button>
+              </Link>
+              <Link className='link' to="/manga">
+                <Button>MANGA</Button>
+              </Link>
+              <Link className='link' to="/community">
+                <Button>COMMUNITY</Button>
+              </Link>
+              <Link className='link' to="/about">
+                <Button>ABOUT</Button>
+              </Link>
+            </Group>
           </Navbar.Section>
         </Navbar>
       }
       header={
         <Header className='header' height={{ base: 50, md: 70 }} p="md">
-          <div style={{ display: 'flex', alignItems: 'center', height: '100%', width: '100%'}}>
+          <div style={{ display: 'flex', alignItems: 'center', height: '100%', width: '100%' }}>
             <Link className='title' to="/">
               <Text
                 variant="gradient"
@@ -95,13 +100,14 @@ function handleInputChange(event) {
             <Input
               className='searchBar'
               placeholder="Search"
-              //value={searchInput}
-              onChange={handleInputChange}
-              //variant="default"
-              //size="sm"
+              onChange={handleSearchInput}
+              onKeyDown={(event) => {
+                if (event.key === 'Enter') {
+                  handleSearchSubmit(event);
+                }
+              }}
               icon={<SearchIcon />}
-              />
-            
+            />
           </div>
         </Header>
       }

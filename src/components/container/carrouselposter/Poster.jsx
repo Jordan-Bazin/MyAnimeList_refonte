@@ -31,8 +31,8 @@ export default function Poster(props) {
                         <Rating value={props.data.score / 2} fractions={8} title={props.data.score / 2} size="lg" readOnly />
                     </Group>
                     <div className="button">
-                        <Link className="link" to={`/focusAnime/${props.data.mal_id}`}><Button className="buttonMoreInfo" variant="gradient" gradient={{ from: '#CD3D10', to: '#E3AA63', deg: 90 }} size="lg">MORE INFO</Button></Link>
-                        <Link className="link" to={`/focusAnime/${props.data.mal_id}`}><Button className="buttonAddWatchList" variant="gradient" gradient={{ from: 'indigo', to: 'cyan' }} size="lg">ADD TO WATCH LIST</Button></Link>
+                        <Link className="link" to={`/focusAnime/${props.data.mal_id}`}><Button variant="gradient" gradient={{ from: '#CD3D10', to: '#E3AA63', deg: 90 }} size="lg">MORE INFO</Button></Link>
+                        <Link className="link" to={`/focusAnime/${props.data.mal_id}`}><Button variant="gradient" gradient={{ from: 'indigo', to: 'cyan' }} size="lg">ADD TO WATCH LIST</Button></Link>
                     </div>
                 </div>
             </Carousel.Slide>
