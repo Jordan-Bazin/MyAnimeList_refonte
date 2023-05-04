@@ -3,9 +3,9 @@ import CarrouselPoster from '../container/carrouselposter/CarrouselPoster';
 
 export default function Home() {
     return (
-        <div style={{paddingLeft : "16px", paddingRight : "16px"}}>  
+        <div style={{paddingLeft : "16px", paddingRight : "16px"}} className="aled">  
             <CarrouselPoster />
-            <Container />
+            <Container type="anime"/>
         </div>
     );
 }

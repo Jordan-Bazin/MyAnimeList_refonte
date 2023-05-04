@@ -1,4 +1,6 @@
 import "./focusAnime.css";
+import { redirect } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useCounter } from '@mantine/hooks';
 import { ScrollArea, Button, Group, Rating } from '@mantine/core';
@@ -9,11 +11,10 @@ export default function FocusAnime(props) {
     const [loading, setLoading] = useState(false);
     const [scrapeLoading, setScrapeLoading] = useState(false);
     const [episodeData, setEpisodeData] = useState([]);
-    const [episodes, setEpisodes] = useState(null);
     const [count, handlers] = useCounter(1, { min: 0, max: 50 });
     const [cptEpisodes, setCptEpisodes] = useState(1);
-    const [hasLoaded, setHasLoaded] = useState(false);
 
+    const navigate = useNavigate();
     const addEpisodes = async () => {
         if (cptEpisodes + 5 < anime.episodes) {
             setCptEpisodes(cptEpisodes + 5);
@@ -41,8 +42,13 @@ export default function FocusAnime(props) {
         fetch(`https://api.jikan.moe/v4/anime/${props.id}/full`)
             .then((response) => response.json())
             .then((data) => {
-                setAnime(data.data);
-                setLoading(true);
+                if(data.data) {
+                    setAnime(data.data);
+                    setLoading(true);
+                }
+                else {
+                    navigate("/");
+                }
             });
     }, []);
   
@@ -95,16 +101,16 @@ export default function FocusAnime(props) {
                                     <p><b>Synopsis :</b></p>
                                     <p className="focusAnime__synopsis">{anime.synopsis}</p>
                                     <br />
-                                    <p><b>Genres</b> : {genre}</p>
-                                    <p><b>Themes</b> : {theme}</p>
-                                    <p><b>Producers</b> : {producer}</p>
-                                    <p><b>Year</b> : {anime.year}</p>
+                                    {genre && <p><b>Genres</b> : {genre}</p>}
+                                    {theme && <p><b>Themes</b> : {theme}</p>}
+                                    {producer && <p><b>Producers</b> : {producer}</p>}
+                                    {anime.year && <p><b>Year</b> : {anime.year}</p>}
                                 </div>
                             </ScrollArea>
                         </div>
                         <div className="focusAnime__container">
                             {anime.episodes == 1 ? (     
-                                    <div className="trailer">
+                                    anime.trailer.embed_url && <div className="trailer">
                                         <iframe style={{ width: '100%', height: '100%' }}
                                             src={ anime.trailer.embed_url }
                                             allowFullScreen
@@ -138,15 +144,15 @@ export default function FocusAnime(props) {
                                 </div>
                                 <div className="detailsContainer">
                                     <h3>Détails and stats</h3>
-                                    <p><b>Episodes : </b>{anime.episodes}</p>
-                                    <p><b>Duration : </b>{anime.duration}</p>
-                                    <p><b>Status : </b>{anime.status}</p>
+                                    {anime.episodes && <p><b>Episodes : </b>{anime.episodes}</p>}
+                                    {anime.duration && <p><b>Duration : </b>{anime.duration}</p>}
+                                    {anime.status && <p><b>Status : </b>{anime.status}</p>}
                                     <div style={{ width: "100%", display: "flex", justifyContent: "center" }}><div className="separation"></div></div>
                                     <div style={{ display: "flex", flexDirection: "row" }}><p><b>Score : </b></p><Rating style={{ paddingTop: "8px", paddingLeft: "8px" }} value={anime.score / 2} fractions={8} title={anime.score / 2} size="md" readOnly /></div>
-                                    <p><b>Ranked : </b>{anime.rank}</p>
-                                    <p><b>Popularity : </b>{anime.popularity}</p>
-                                    <p><b>Members : </b>{anime.members}</p>
-                                    <p><b>Favorites : </b>{anime.favorites}</p>
+                                    {anime.rank && <p><b>Ranked : </b>{anime.rank}</p>}
+                                    {anime.popularity && <p><b>Popularity : </b>{anime.popularity}</p>}
+                                    {anime.members && <p><b>Members : </b>{anime.members}</p>}
+                                    {anime.favorites && <p><b>Favorites : </b>{anime.favorites}</p>}
                                 </div>
                             </div>
                         </div>

@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { createStyles, Navbar, Group, Text, AppShell, Header, Image, Input, Footer, Button, ScrollArea } from '@mantine/core';
+import { createStyles, Navbar, Group, Text, AppShell, Header, Image, Input, Footer, Button, ScrollArea, MediaQuery,
+  Burger, } from '@mantine/core';
 import { Outlet, Link } from "react-router-dom";
 import SearchIcon from './components/icons/SearchIcons';
 import Container from './components/container/Container'
@@ -49,7 +50,7 @@ export default function App() {
       navbarOffsetBreakpoint="sm"
       asideOffsetBreakpoint="sm"
       navbar={
-        <Navbar className='navbar' p="md" hiddenBreakpoint="sm" hidden={!opened} width={{ base: 100, sm: 200, lg: 300 }}>
+        <Navbar className='navbar' p="md" hiddenBreakpoint="sm" hidden={!opened} width={{ base: 240, sm: 200, lg: 300 }}>
           <Link to="/">
             <Group className={classes.navbar} position="apart">
               <div style={{ width: 200, marginLeft: 'auto', marginRight: 'auto' }}>
@@ -87,6 +88,15 @@ export default function App() {
       header={
         <Header className='header' height={{ base: 50, md: 70 }} p="md">
           <div style={{ display: 'flex', alignItems: 'center', height: '100%', width: '100%' }}>
+          <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
+              <Burger
+                opened={opened}
+                onClick={() => setOpened((o) => !o)}
+                size="sm"
+                color="gray"
+                mr="xl"
+              />
+            </MediaQuery>
             <Link className='title' to="/">
               <Text
                 variant="gradient"

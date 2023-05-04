@@ -5,7 +5,7 @@ export default function Anime() {
     return (
         <div style={{paddingLeft : "16px", paddingRight : "16px"}}>  
             <CarrouselPoster />
-            <Container />
+            <Container type="anime"/>
         </div>
     );
 }

@@ -39,10 +39,10 @@ export default function FocusManga(props) {
                                 <p><b>Synopsis :</b></p>
                                 <p className="focusAnime__synopsis">{manga.synopsis}</p>
                                 <br />
-                                <p><b>Genres</b> : {genre}</p>
-                                <p><b>Themes</b> : {theme}</p>
-                                <p><b>Producers</b> : {producer}</p>
-                                <p><b>Year</b> : {manga.year}</p>
+                                {genre && <p><b>Genres</b> : {genre}</p>}
+                                {theme && <p><b>Themes</b> : {theme}</p>}
+                                {producer && <p><b>Producers</b> : {producer}</p>}
+                                {manga.year && <p><b>Year</b> : {manga.year}</p>}
                             </div>
                         </ScrollArea>
                     </div>
@@ -58,14 +58,14 @@ export default function FocusManga(props) {
                             </div>
                             <div className="detailsContainer">
                                 <h3>Détails and stats</h3>
-                                <p><b>Volumes : </b>{manga.volumes}</p>
-                                <p><b>Status : </b>{manga.status}</p>
+                                {manga.volumes && <p><b>Volumes : </b>{manga.volumes}</p>}
+                                {manga.status && <p><b>Status : </b>{manga.status}</p>}
                                 <div style={{ width: "100%", display: "flex", justifyContent: "center" }}><div className="separation"></div></div>
                                 <div style={{ display: "flex", flexDirection: "row" }}><p><b>Score : </b></p><Rating style={{ paddingTop: "8px", paddingLeft: "8px" }} value={manga.score / 2} fractions={8} title={manga.score / 2} size="md" readOnly /></div>
-                                <p><b>Ranked : </b>{manga.rank}</p>
-                                <p><b>Popularity : </b>{manga.popularity}</p>
-                                <p><b>Members : </b>{manga.members}</p>
-                                <p><b>Favorites : </b>{manga.favorites}</p>
+                                {manga.rank && <p><b>Ranked : </b>{manga.rank}</p>}
+                                {manga.popularity && <p><b>Popularity : </b>{manga.popularity}</p>}
+                                {manga.members && <p><b>Members : </b>{manga.members}</p>}
+                                {manga.favorites && <p><b>Favorites : </b>{manga.favorites}</p>}
                             </div>
                         </div>
                     </div>

@@ -22,14 +22,13 @@ const useStyles = createStyles((theme, _params, getRef) => {
   };
 });
 
-export default function Container() {
+export default function Container(props) {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [postsManga, setPostsManga] = useState([]);
-  const { classes, cx } = useStyles();
+
 
   useEffect(() => {
-    fetch("https://api.jikan.moe/v4/anime")
+    fetch("https://api.jikan.moe/v4/"+props.type)
       .then((response) => response.json())
       .then((data) => {
         setPosts(data["data"]);
@@ -45,7 +44,7 @@ export default function Container() {
     let anime = posts.map((post, index) => {
       return (
         <Carousel.Slide key={index} style={{width : 180}}>
-          <AnimeInSection data={post} />
+          <AnimeInSection data={post} type={props.type} />
         </Carousel.Slide>
       )
     })
@@ -85,7 +84,7 @@ export default function Container() {
     <div className="container">
       {loading ? sections : (
         <div className="focusAnime__loading">
-        <img src="./../../../public/logo.png" />
+        <img src="./../../../public/logo.png" alt="loader"/>
       </div> )}
     </div>
   )

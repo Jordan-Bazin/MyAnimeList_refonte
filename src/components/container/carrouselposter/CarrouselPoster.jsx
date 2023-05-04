@@ -69,7 +69,7 @@ export default function CarrouselPoster(props) {
             >
                 {loading ? anime.slice(0, 5) : (
                     <div className="focusAnime__loading">
-                        <img src="./../../../public/logo.png" />
+                        <img src="./../../../public/logo.png" alt="loader"/>
                     </div>
                     ) 
                 }

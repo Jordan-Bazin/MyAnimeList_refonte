@@ -5,7 +5,7 @@ export default function Manga() {
     return (
         <div style={{paddingLeft : "16px", paddingRight : "16px"}}>  
             <CarrouselPoster />
-            <Container />
+            <Container type="manga"/>
         </div>
     );
 }
