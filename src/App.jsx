@@ -4,7 +4,7 @@ import { createStyles, Navbar, Group, Text, AppShell, Header, Image, Input, Foot
 import { Outlet, Link } from "react-router-dom";
 import SearchIcon from './components/icons/SearchIcons';
 import Container from './components/container/Container'
-import CarrouselPoster from './components/container/carrouselposter/CarrouselPoster'
+import CarrouselPoster from './components/carrouselposter/CarrouselPoster'
 import './App.css'
 
 

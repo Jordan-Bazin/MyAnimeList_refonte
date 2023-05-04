@@ -1,5 +1,5 @@
 import Container from '../container/Container';
-import CarrouselPoster from '../container/carrouselposter/CarrouselPoster';
+import CarrouselPoster from '../carrouselposter/CarrouselPoster';
 
 export default function Manga() {
     return (
